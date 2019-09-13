@@ -21,13 +21,19 @@ install:
 - sudo minikube start --vm-driver=none --kubernetes-version=v1.15.0 
 - "sudo chown -R travis: /home/travis/.minikube/"
 
-script:
-# Following is just to demo that the kubernetes cluster works.
-- kubectl cluster-info
-# Verify kube-addon-manager.
-# kube-addon-manager is responsible for managing other kubernetes components, such as kube-dns, dashboard, storage-provisioner..
-- JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl -n kube-system get pods -lcomponent=kube-addon-manager -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for kube-addon-manager to be available"; kubectl get pods --all-namespaces; done
-# Wait for kube-dns to be ready.
-- JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl -n kube-system get pods -lk8s-app=kube-dns -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for kube-dns to be available"; kubectl get pods --all-namespaces; done
-- e2e/deploy.sh
-
+jobs:
+  include:
+    - stage: check_cluster
+      script:
+        # Following is just to demo that the kubernetes cluster works.
+        - kubectl cluster-info
+        # Verify kube-addon-manager.
+        - JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl -n kube-system get pods -lcomponent=kube-addon-manager -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for kube-addon-manager to be available"; kubectl get pods --all-namespaces; done
+        # Wait for kube-dns to be ready.
+        - JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl -n kube-system get pods -lk8s-app=kube-dns -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for kube-dns to be available"; kubectl get pods --all-namespaces; done
+    - stage: deploy
+      script:
+        - e2e/deploy.sh
+    - stage: test
+      script:
+        - e2e/test.sh
