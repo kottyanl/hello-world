@@ -5,7 +5,7 @@ SCRIPT_ROOT=$(dirname "${BASH_SOURCE}")
 cd $SCRIPT_ROOT
 
 test_request () {
-    echo $(kubectl exec -it minikube curl http://localhost:$1) >> results.txt
+    echo $(docker exec -it minikube curl http://localhost:$1) >> results.txt
 }
 
 rm -f results.txt 

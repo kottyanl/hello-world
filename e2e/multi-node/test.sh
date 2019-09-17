@@ -4,23 +4,27 @@
 SCRIPT_ROOT=$(dirname "${BASH_SOURCE}")
 cd $SCRIPT_ROOT
 
-test_request () {
-    echo $(docker exec -it kind-control-plane curl http://localhost:$1) >> results.txt
-}
+echo $(minikube ip)
 
-rm -f results.txt 
+curl http://$(minikube ip)
 
-# Test apps listening on different ports
-test_request 30500
-test_request 30400
-test_request 30300
+# test_request () {
+#     echo $(docker exec -it kind-control-plane curl http://localhost:$1) >> results.txt
+# }
 
-cat results.txt
+# rm -f results.txt 
 
-# Check and set exit status
-while read p; do
-  if [[ "$p" != "Hello"* ]]; then
-    exit 1
-  fi
-done <results.txt
-exit 0
+# # Test apps listening on different ports
+# test_request 30500
+# test_request 30400
+# test_request 30300
+
+# cat results.txt
+
+# # Check and set exit status
+# while read p; do
+#   if [[ "$p" != "Hello"* ]]; then
+#     exit 1
+#   fi
+# done <results.txt
+# exit 0
