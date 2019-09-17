@@ -8,28 +8,11 @@ kubectl get pods -o wide
 
 sleep 30
 
-kubectl get pods -o wide
-
-
-sleep 30
-
-kubectl get pods -o wide
-
-sleep 30
-
-docker ps -a
-
-sleep 30
-
-kubectl get pods -o wide
-
 echo $(minikube ip)
 
-curl http://$(minikube ip)
-
-curl http://localhost
-
 curl http://$(minikube ip):30500
+
+curl http://$(minikube ip):30400
 
 
 # curl http://localhost
