@@ -7,11 +7,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      run: http-app
+      app: http-app-1
   template:
     metadata:
       labels:
-        run: http-app
+        app: http-app-1
     spec:
       containers:
         - name: http-app-1
@@ -26,6 +26,8 @@ spec:
                   fieldPath: metadata.name
             - name: APP_PORT
               value: "5000"
+      nodeSelector:
+        kubernetes.io/hostname: kind-worker
 
 ---
 apiVersion: apps/v1
@@ -36,11 +38,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      run: http-app
+      app: http-app-2
   template:
     metadata:
       labels:
-        run: http-app
+        app: http-app-2
     spec:
       containers:
         - name: http-app-2
@@ -55,6 +57,8 @@ spec:
                   fieldPath: metadata.name
             - name: APP_PORT
               value: "4000"
+      nodeSelector:
+        kubernetes.io/hostname: kind-worker2
 
 ---
 apiVersion: apps/v1
@@ -65,11 +69,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      run: http-app
+      app: http-app-3
   template:
     metadata:
       labels:
-        run: http-app
+        app: http-app-3
     spec:
       containers:
         - name: http-app-3
@@ -84,3 +88,5 @@ spec:
                   fieldPath: metadata.name
             - name: APP_PORT
               value: "3000"
+      nodeSelector:
+        kubernetes.io/hostname: kind-worker2
