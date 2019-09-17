@@ -4,6 +4,9 @@
 SCRIPT_ROOT=$(dirname "${BASH_SOURCE}")
 cd $SCRIPT_ROOT
 
+kubectl config get-contexts
+
+kubectl config use-context minikube
 
 echo $(minikube ip)
 
