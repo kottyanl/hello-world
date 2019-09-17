@@ -23,14 +23,20 @@ sleep 30
 
 kubectl get pods -o wide
 
+echo $(minikube ip)
 
-
+curl http://$(minikube ip)
 
 curl http://localhost
-curl http://localhost:30500
-docker exec -it kind-control-plane curl http://localhost:30500
 
-docker exec -it kind-control-plane curl -v http://localhost:30500
+curl http://$(minikube ip):30500
+
+
+# curl http://localhost
+# curl http://localhost:30500
+# docker exec -it kind-control-plane curl http://localhost:30500
+
+# docker exec -it kind-control-plane curl -v http://localhost:30500
 
 # test_request () {
 #     echo $(docker exec -it kind-control-plane curl http://127.0.0.1:$1) >> results.txt

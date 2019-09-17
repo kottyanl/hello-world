@@ -4,6 +4,7 @@ set -e
 SCRIPT_ROOT=$(dirname "${BASH_SOURCE}")
 cd $SCRIPT_ROOT
 
+eval $(minikube docker-env)
 docker build -t python-http:1.0.1 ..
 kubectl apply -f deployments.yaml
 kubectl apply -f services.yaml
