@@ -5,12 +5,27 @@ SCRIPT_ROOT=$(dirname "${BASH_SOURCE}")
 cd $SCRIPT_ROOT
 
 kubectl get pods -o wide
-kubectl get svc
 
 sleep 30
 
 kubectl get pods -o wide
-kubectl get svc
+
+
+sleep 30
+
+kubectl get pods -o wide
+
+sleep 30
+
+docker ps -a
+
+sleep 30
+
+kubectl get pods -o wide
+
+
+
+
 curl http://localhost
 curl http://localhost:30500
 docker exec -it kind-control-plane curl http://localhost:30500
