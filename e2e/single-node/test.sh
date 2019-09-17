@@ -4,12 +4,18 @@
 SCRIPT_ROOT=$(dirname "${BASH_SOURCE}")
 cd $SCRIPT_ROOT
 
+kubectl get pods -o wide
+kubectl get svc
 
+sleep 30
+
+kubectl get pods -o wide
+kubectl get svc
 curl http://localhost
 curl http://localhost:30500
-docker exec -it kind-control-plane curl http://127.0.0.1:30500
+docker exec -it kind-control-plane curl http://localhost:30500
 
-docker exec -it kind-control-plane bash
+docker exec -it kind-control-plane curl -v http://localhost:30500
 
 # test_request () {
 #     echo $(docker exec -it kind-control-plane curl http://127.0.0.1:$1) >> results.txt
