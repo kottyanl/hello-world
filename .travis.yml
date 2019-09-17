@@ -14,7 +14,7 @@ jobs:
         - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
         
         # Download and install KinD
-        - GO111MODULE=on go get sigs.k8s.io/kind
+        - GO111MODULE=on go get -u -v sigs.k8s.io/kind@master
         # It's possible to download and install KinD using curl, similar as for kubectl
         # This is useful in cases when Go toolchain isn't available or you prefer running stable version
         # Binaries for KinD are available on GitHub Releases: https://github.com/kubernetes-sigs/kind/releases
@@ -27,5 +27,6 @@ jobs:
         - export KUBECONFIG="$(kind get kubeconfig-path)"
       script:
         - kubectl cluster-info
+        - docker exec kind-control-plane sh -c 'echo 8.8.8.8 >> /etc/resolv.conf'
         - e2e/single-node/deploy.sh
         - e2e/single-node/test.sh

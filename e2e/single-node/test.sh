@@ -5,7 +5,7 @@ SCRIPT_ROOT=$(dirname "${BASH_SOURCE}")
 cd $SCRIPT_ROOT
 
 test_request () {
-    echo $(docker exec -it kind-control-plane curl http://localhost:$1) >> results.txt
+    echo $(docker exec -it kind-control-plane curl http://127.0.0.1:$1) >> results.txt
 }
 
 rm -f results.txt 
