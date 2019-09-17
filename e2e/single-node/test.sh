@@ -9,6 +9,10 @@ echo $(minikube ip)
 
 curl http://$(minikube ip)
 
+curl http://localhost
+
+curl http://$(minikube ip):30500
+
 # test_request () {
 #     echo $(docker exec -it minikube curl http://localhost:$1) >> results.txt
 # }
