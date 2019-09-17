@@ -5,7 +5,7 @@ SCRIPT_ROOT=$(dirname "${BASH_SOURCE}")
 cd $SCRIPT_ROOT
 
 test_request () {
-    echo $(curl --connect-timeout 30 http://$(minikube ip):$1) >> results.txt
+    echo $(kubectl exec -it minikube curl -m 30 http://localhost:$1) >> results.txt
 }
 
 rm -f results.txt 
