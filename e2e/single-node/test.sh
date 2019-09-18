@@ -16,17 +16,18 @@ echo -e '\nTesting started'
 
 test_request 30500
 test_request 30400
+test_request 30422
 test_request 30300
 
-echo -e '\nTesting finished\n'
+echo -e '\nTesting finished'
 
 if [ -s "log" ]; then
-  echo -e "\n\nRESPONSES:\n"
+  echo -e "\nRESPONSES:\n"
   cat log
 fi
 
 if [ -s "err.log" ]; then
-  echo -e "\n\nERRORS:\n"
+  echo -e "\nERRORS:\n"
   cat err.log
 fi
 
