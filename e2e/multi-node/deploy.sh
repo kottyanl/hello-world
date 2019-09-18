@@ -10,6 +10,8 @@ kind load docker-image python-http:1.0.1
 kubectl apply -f deployments.yaml
 kubectl apply -f services.yaml
 
+kubectl get nodes -o wide
+
 # kubectl wait --for=condition=available --timeout=600s deployment/http-app-1
 # kubectl wait --for=condition=available --timeout=600s deployment/http-app-2
 # kubectl wait --for=condition=available --timeout=600s deployment/http-app-3
