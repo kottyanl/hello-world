@@ -20,12 +20,12 @@ test_request 30300
 
 echo -e '\nTesting finished\n'
 
-if [ -f "log" ]; then
+if [ -s "log" ]; then
   echo -e "\n\nRESPONSES:\n"
   cat log
 fi
 
-if [ -f "err.log" ]; then
+if [ -s "err.log" ]; then
   echo -e "\n\nERRORS:\n"
   cat err.log
 fi
