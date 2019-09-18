@@ -33,4 +33,4 @@ jobs:
         - docker exec kind-control-plane sh -c 'echo 8.8.8.8 >> /etc/resolv.conf'
         - kubectl cluster-info
         - e2e/multi-node/deploy.sh
-        # - e2e/multi-node/test.sh
+        - e2e/multi-node/test.sh
