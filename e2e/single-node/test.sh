@@ -12,11 +12,13 @@ test_request () {
 rm -f log err.log 
 
 # Test apps listening on different ports
+echo -e '\nTesting started'
+
 test_request 30500
 test_request 30400
 test_request 30300
 
-echo -e '\nTEST DONE\n'
+echo -e '\nTesting finished\n'
 
 if [ -f "log" ]; then
   echo -e "\n\nRESPONSES:\n"
