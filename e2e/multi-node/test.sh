@@ -20,17 +20,17 @@ test_request 30300
 
 echo -e '\nTesting finished'
 
-docker exec -it kind-control-plane test -s "log")
+docker exec -it kind-control-plane test -s "log"
 if [ $(echo $?) -eq 0 ]; then
   echo -e "\nRESPONSES:\n"
-  docker exec -it kind-control-plane cat "log")
+  docker exec -it kind-control-plane cat "log"
 fi
 
-docker exec -it kind-control-plane test -s "err.log")
+docker exec -it kind-control-plane test -s "err.log"
 if [ $(echo $?) -eq 0 ]; then
   echo -e "\nERRORS:\n"
-  docker exec -it kind-control-plane cat "err.log")
+  docker exec -it kind-control-plane cat "err.log"
 fi
 
-docker exec -it kind-control-plane test -s "err.log")
+docker exec -it kind-control-plane test -s "err.log"
 [ $(echo $?) -eq 0 ] && exit 1 || exit 0 
