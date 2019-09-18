@@ -1,0 +1,13 @@
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.7.4
+Date: Wed, 18 Sep 2019 06:58:28 GMT
+
+Hello, it's http-app-1-78f6c49989-svr4b listening on port 5000HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.7.4
+Date: Wed, 18 Sep 2019 06:58:28 GMT
+
+Hello, it's http-app-2-c6b5d7549-vcqtb listening on port 4000HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.7.4
+Date: Wed, 18 Sep 2019 06:58:29 GMT
+
+Hello, it's http-app-3-54b47f8645-wflk2 listening on port 3000

@@ -13,9 +13,18 @@ rm -f log err.log
 # Test apps listening on different ports
 test_request 30500
 test_request 30400
+test_request 30333
 test_request 30300
+echo -e '\nDONE\n'
 
-cat log 2>/dev/null
-cat err.log 2>/dev/null
+if [ -f "log" ]; then
+  echo -e "\n\nRESPONSES:\n"
+  cat log
+fi
+
+if [ -f "err.log" ]; then
+  echo -e "\n\nERRORS:\n"
+  cat err.log
+fi
 
 [ -s err.log ] && exit 1 || exit 0 
