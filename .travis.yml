@@ -28,4 +28,4 @@ jobs:
       script:
         - kubectl cluster-info
         - e2e/multi-node/deploy.sh
-        - e2e/multi-node/test.sh
+        # - e2e/multi-node/test.sh
