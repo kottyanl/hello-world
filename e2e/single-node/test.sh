@@ -5,7 +5,8 @@ SCRIPT_ROOT=$(dirname "${BASH_SOURCE}")
 cd $SCRIPT_ROOT
 
 test_request () {
-    curl -fisS http://$(minikube ip):$1 >>log 2>>err.log
+    curl -fisS http://$(minikube ip):$1 >> log 2>>err.log
+    echo -e '\n' >> log
 }
 
 rm -f log err.log 
