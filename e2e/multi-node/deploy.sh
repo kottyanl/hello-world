@@ -18,14 +18,14 @@ kubectl apply -f services.yaml
 # kubectl get svc
 sleep 30
 kubectl describe pods
-sleep 30
+sleep 60
 kubectl describe pods
-sleep 30
+sleep 90
 kubectl describe pods
-sleep 30
+sleep 120
 kubectl describe pods
-sleep 30
+sleep 150
 kubectl describe pods
-sleep 30
+sleep 180
 kubectl describe pods
 
