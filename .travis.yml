@@ -25,6 +25,7 @@ jobs:
         
         # Create a new Kubernetes cluster using KinD
         - kind create cluster
+        kind create cluster --config e2e/multi-node/kind-config.yaml
 
         # Set KUBECONFIG environment variable
         - export KUBECONFIG="$(kind get kubeconfig-path)"

@@ -22,12 +22,5 @@ sleep 30
 kubectl describe pods
 sleep 60
 kubectl describe pods
-sleep 90
-kubectl describe pods
-sleep 120
-kubectl describe pods
-sleep 150
-kubectl describe pods
-sleep 180
-kubectl describe pods
+
 
