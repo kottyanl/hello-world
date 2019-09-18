@@ -16,6 +16,7 @@ spec:
       containers:
         - name: http-app-1
           image: python-http:1.0.1
+          imagePullPolicy: IfNotPresent
           command: ["./server.py"]
           ports:
             - containerPort: 5000
@@ -45,6 +46,7 @@ spec:
       containers:
         - name: http-app-2
           image: python-http:1.0.1
+          imagePullPolicy: IfNotPresent
           command: ["./server.py"]
           ports:
             - containerPort: 4000
@@ -74,6 +76,7 @@ spec:
       containers:
         - name: http-app-3
           image: python-http:1.0.1
+          imagePullPolicy: IfNotPresent
           command: ["./server.py"]
           ports:
             - containerPort: 3000
