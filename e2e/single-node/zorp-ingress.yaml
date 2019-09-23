@@ -105,7 +105,7 @@ spec:
       serviceAccountName: zorp-ingress-service-account
       containers:
       - name: zorp-ingress
-        image: balasys/zorp-ingress:devel
+        image: balasys/zorp-ingress
         imagePullPolicy: Always
         args:
           - --namespace=zorp-controller
