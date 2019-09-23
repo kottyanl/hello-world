@@ -28,8 +28,7 @@ jobs:
 
         # Set KUBECONFIG environment variable
         - export KUBECONFIG="$(kind get kubeconfig-path)"
-      script:
         - docker exec kind-control-plane sh -c 'echo 8.8.8.8 >> /etc/resolv.conf'
         - kubectl cluster-info
-        - e2e/multi-node/deploy.sh
+      script:
         - e2e/multi-node/test.sh
