@@ -15,5 +15,7 @@ kubectl wait --for=condition=available --timeout=600s deployment/http-app-2
 kubectl wait --for=condition=available --timeout=600s deployment/http-app-3
 kubectl wait --for=condition=available --timeout=600s deployment/zorp-ingress -n zorp-controller
 kubectl get deployments
-kubectl get pods -o wide
+kubectl get pods -o wide -A
 kubectl get svc
+# probably zorp configuration is not processed yet
+sleep 30
