@@ -18,4 +18,4 @@ kubectl get deployments
 kubectl get pods -o wide -A
 kubectl get svc
 # probably zorp configuration is not processed yet
-sleep 30
+sleep 60
